@@ -1,55 +1,59 @@
 package com.example.myfirstapp;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
+
+    RecyclerView recyclerViewe;
+    String[] name;
+    String[] description;
+    String[] cost;
+    int[] image;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+        recyclerViewe = findViewById(R.id.recyclerViewe);
+
+        image = new  int[]{R.drawable.pizza1,R.drawable.pizza2,R.drawable.pizza3,R.drawable.pizza4,R.drawable.pizza5,R.drawable.pizza6,R.drawable.pizza7,R.drawable.pizza8};
+
+
+        name = new String[]{ "Pepperoni Pizza", "Multigrain  Pizza", "Chicken Pizza", "Margherita Pizza", "Vegetarian Pizz","Mini Mushroom Pizza","Wholegrain Pizza","Scone Pizz"};
+        description = new String[]{"cheesy, spicy",
+                "healthy makeover ",
+                "cheese, chill",
+                " fresh veggies ",
+                " bread base",
+                "box-cookings.",
+                "high on flavo",
+                " Mini pizzas",
+        };
+        cost = new String[]{"$500", "$400", "$600", "$800", "$1500","$900", "$100","$200"
+        };
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
+        recyclerViewe.setLayoutManager(linearLayoutManager);
+
+        MyAdapter myAdapter = new MyAdapter(MainActivity.this,image, name, cost, description);
+        recyclerViewe.setAdapter(myAdapter);
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
 }
+
+
+
+
+

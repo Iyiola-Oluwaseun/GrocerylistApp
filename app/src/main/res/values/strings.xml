@@ -13,4 +13,6 @@
     <string name="hello_fourth_fragment">Track:MOBILE TRACK\nCourses:JAVA,KOTLIN,FLUTTER</string>
     <string name="hello_third_fragment">Email: holuwaseun50@gmail.com</string>
     <string name="hello_fifth_fragment">BASIC INFORMATION</string>
+    <string name="pizza">image</string>
+    <string name="share">share</string>
 </resources>
